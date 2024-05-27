@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Ceno.pl Web Scraper</title>
+    {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Ceno.pl Web Scraper</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Strona główna</a></li>
+                <li><a href="{{ url_for('products') }}">Lista produktów</a></li>
+                <li><a href="{{ url_for('extract') }}">Ekstrakcja opinii</a></li>
+                <li><a href="{{ url_for('about') }}">O autorze</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="content-container">
+        <section>
+            {% block content %}
+            <p>To jest plik z layoutem</p>
+            {% endblock %}
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Twoja aplikacja</p>
+    </footer>
+</body>
+</html>
