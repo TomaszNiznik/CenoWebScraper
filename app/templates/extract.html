@@ -10,6 +10,10 @@
         <input type="text" id="product_id" name="product_id" placeholder="Podaj kod produktu"><br><br>
         <input type="submit" value="Uruchom Ekstrakcję">
     </form>
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
 {% endblock %}
+
 
 
