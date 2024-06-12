@@ -1,0 +1,2 @@
+id,author,recommendation,rating,verified_purchase,review_date,purchase_date,useful,not_useful,content,cons,pros
+3,User3,yes,4,False,2023-01-03,2022-12-27,8,1,Good product,Battery,Performance

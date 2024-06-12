@@ -1,5 +1,51 @@
 {% extends "base.html" %}
-
 {% block content %}
-    <h2>Szczegóły Produktu: {{ product_id }}</h2>
+    <h2>Opinie o produkcie {{ product.name }}</h2>
+    <table id="reviewsTable">
+        <thead>
+            <tr>
+                <th>Identyfikator opinii</th>
+                <th>Autor</th>
+                <th>Rekomendacja</th>
+                <th>Liczba gwiazdek</th>
+                <th>Potwierdzona zakupem</th>
+                <th>Data wystawienia</th>
+                <th>Data zakupu</th>
+                <th>Przydatna</th>
+                <th>Nieprzydatna</th>
+                <th>Treść opinii</th>
+                <th>Wady</th>
+                <th>Zalety</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for opinion in opinions %}
+            <tr>
+                <td>{{ opinion.id }}</td>
+                <td>{{ opinion.author }}</td>
+                <td>{{ opinion.recommendation }}</td>
+                <td>{{ opinion.rating }}</td>
+                <td>{{ opinion.verified_purchase }}</td>
+                <td>{{ opinion.review_date }}</td>
+                <td>{{ opinion.purchase_date }}</td>
+                <td>{{ opinion.useful }}</td>
+                <td>{{ opinion.not_useful }}</td>
+                <td>{{ opinion.content }}</td>
+                <td>{{ opinion.cons }}</td>
+                <td>{{ opinion.pros }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form action="{{ url_for('download_opinions', product_id=product.id) }}" method="post">
+        <select name="file_format">
+            <option value="csv">CSV</option>
+            <option value="xlsx">XLSX</option>
+            <option value="json">JSON</option>
+        </select>
+        <button type="submit">Pobierz opinie</button>
+    </form>
+    <a href="{{ url_for('products') }}">Powrót do listy produktów</a>
 {% endblock %}
+
+
