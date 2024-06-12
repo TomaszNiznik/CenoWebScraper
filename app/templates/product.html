@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>Opinie o produkcie {{ product.name }}</h2>
+    <h2>Opinie o produkcie {{ product_id }}</h2>
     <table id="reviewsTable">
         <thead>
             <tr>
@@ -37,7 +37,7 @@
             {% endfor %}
         </tbody>
     </table>
-    <form action="{{ url_for('download_opinions', product_id=product.id) }}" method="post">
+    <form action="{{ url_for('download_opinions', product_id=product_id) }}" method="post">
         <select name="file_format">
             <option value="csv">CSV</option>
             <option value="xlsx">XLSX</option>
@@ -47,5 +47,3 @@
     </form>
     <a href="{{ url_for('products') }}">Powrót do listy produktów</a>
 {% endblock %}
-
-

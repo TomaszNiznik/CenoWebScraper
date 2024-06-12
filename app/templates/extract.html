@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Ekstrakcja Opinii</h2>
-    {% if error_message %}
-        <p style="color: red;">{{ error_message }}</p>
-    {% endif %}
-    <form action="{{ url_for('extract') }}" method="post">
-        <label for="product_id">ID Produktu:</label><br>
-        <input type="text" id="product_id" name="product_id" placeholder="Podaj kod produktu"><br><br>
-        <input type="submit" value="Uruchom Ekstrakcję">
-    </form>
+<h2>Ekstrakcja Opinii</h2>
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+<form id="extract-form" method="POST">
+    <label for="product_id">ID Produktu:</label>
+    <input type="text" id="product_id" name="product_id" required>
+    <button type="submit">Uruchom ekstrakcję</button>
+</form>
 {% endblock %}

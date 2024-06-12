@@ -1,33 +1,23 @@
 {% extends "base.html" %}
+
 {% block content %}
-    <h2>Lista produktów</h2>
-    <table>
-        <tr>
-            <th>Nazwa produktu</th>
-            <th>Liczba opinii</th>
-            <th>Liczba wad</th>
-            <th>Liczba zalet</th>
-            <th>Średnia ocena</th>
-            <th>Pobierz opinie</th>
-        </tr>
-        {% for product in products %}
-        <tr>
-            <td><a href="{{ url_for('product', product_id=product.id) }}">{{ product.name }}</a></td>
-            <td>{{ product.opinions_count }}</td>
-            <td>{{ product.cons_count }}</td>
-            <td>{{ product.pros_count }}</td>
-            <td>{{ product.avg_rating }}</td>
-            <td>
-                <form action="{{ url_for('download_opinions', product_id=product.id) }}" method="post">
-                    <select name="file_format">
-                        <option value="csv">CSV</option>
-                        <option value="xlsx">XLSX</option>
-                        <option value="json">JSON</option>
-                    </select>
-                    <button type="submit">Pobierz</button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+<h2>Lista produktów</h2>
+<table>
+    <tr>
+        <th>Nazwa produktu</th>
+        <th>Liczba opinii</th>
+        <th>Liczba wad</th>
+        <th>Liczba zalet</th>
+        <th>Średnia ocena</th>
+    </tr>
+    {% for product in products %}
+    <tr>
+        <td><a href="{{ url_for('product', product_id=product.id) }}">{{ product.name }}</a></td>
+        <td>{{ product.opinions_count }}</td>
+        <td>{{ product.cons_count }}</td>
+        <td>{{ product.pros_count }}</td>
+        <td>{{ product.avg_rating }}</td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}
